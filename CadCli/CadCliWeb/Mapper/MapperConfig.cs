@@ -11,6 +11,7 @@ namespace CadCliWeb.Mapper
             return new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<ClienteViewModel, Cliente>();
+                cfg.CreateMap<Cliente, ClienteViewModel>();
             });
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Application.Interfaces
 {
-    public interface IClienteApp : IGenericApplication<Cliente>
+    public interface IClienteAppServico : IAppServicoBase<Cliente>
     {
     }
 }

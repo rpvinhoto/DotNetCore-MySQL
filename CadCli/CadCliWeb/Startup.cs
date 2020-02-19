@@ -1,9 +1,11 @@
-﻿using Application.Apps;
+﻿using Application.AppServicos;
 using Application.Interfaces;
 using CadCliWeb.Mapper;
-using Domain.Interfaces;
+using Domain.Interfaces.Repositorios;
+using Domain.Interfaces.Servicos;
+using Domain.Servicos;
 using Infra.Context;
-using Infra.Repository;
+using Infra.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,10 +37,16 @@ namespace CadCliWeb
 
             services.AddDbContext<CadCliContext>(options => options.UseMySql(Configuration.GetConnectionString("CadCliConnection")));
 
-            services.AddSingleton(typeof(IGenericInterface<>), typeof(GenericRepository<>));
-            services.AddSingleton<IClienteInterface, ClienteRepository>();
-            services.AddSingleton<IClienteApp, ClienteApp>();
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton(typeof(IAppServicoBase<>), typeof(AppServicoBase<>));
+            services.AddTransient<IClienteAppServico, ClienteAppServico>();
+
+            services.AddSingleton(typeof(IServicoBase<>), typeof(ServicoBase<>));
+            services.AddTransient<IClienteServico, ClienteServico>();
+
+            services.AddSingleton(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
+            services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             var mapperConfig = MapperConfig.Configure();
             var mapper = mapperConfig.CreateMapper();
@@ -53,7 +61,7 @@ namespace CadCliWeb
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Clientes/Error");
                 app.UseHsts();
             }
 
@@ -65,7 +73,7 @@ namespace CadCliWeb
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Clientes}/{action=Index}/{id?}");
             });
         }
     }

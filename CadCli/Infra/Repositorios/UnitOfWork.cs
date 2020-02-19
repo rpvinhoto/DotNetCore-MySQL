@@ -2,26 +2,23 @@
 using Infra.Context;
 using System;
 
-namespace Infra.Repository
+namespace Infra.Repositorios
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly CadCliContext _context;
-        private GenericRepository<Cliente> _clienteRepositorio;
+        private RepositorioBase<Cliente> _clienteRepositorio;
 
         public UnitOfWork(CadCliContext context)
         {
             _context = context;
         }
 
-        public GenericRepository<Cliente> ClienteRepositorio
+        public RepositorioBase<Cliente> ClienteRepositorio
         {
             get
             {
-                if (_clienteRepositorio == null)
-                    _clienteRepositorio = new GenericRepository<Cliente>(_context);
-
-                return _clienteRepositorio;
+                return _clienteRepositorio = _clienteRepositorio ?? new RepositorioBase<Cliente>(_context);
             }
         }
 

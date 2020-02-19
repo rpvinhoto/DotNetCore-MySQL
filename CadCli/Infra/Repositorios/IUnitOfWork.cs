@@ -1,11 +1,11 @@
 ﻿using Domain.Entidades;
 using System;
 
-namespace Infra.Repository
+namespace Infra.Repositorios
 {
     public interface IUnitOfWork : IDisposable
     {
-        GenericRepository<Cliente> ClienteRepositorio { get; }
+        RepositorioBase<Cliente> ClienteRepositorio { get; }
         void Save();
     }
 }

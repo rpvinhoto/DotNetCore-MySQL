@@ -2,29 +2,27 @@
 using AutoMapper;
 using CadCliWeb.Models;
 using Domain.Entidades;
-using Infra.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CadCliWeb.Controllers
 {
     public class ClientesController : Controller
     {
-        private readonly IClienteApp _clienteApp;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IClienteAppServico _clienteAppServico;
         private readonly IMapper _mapper;
 
-        public ClientesController(IClienteApp clienteApp, IUnitOfWork unitOfWork, IMapper mapper)
+        public ClientesController(IClienteAppServico clienteAppServico, IMapper mapper)
         {
-            _clienteApp = clienteApp;
-            _unitOfWork = unitOfWork;
+            _clienteAppServico = clienteAppServico;
             _mapper = mapper;
         }
 
         // GET: Clientes
         public IActionResult Index()
         {
-            return View(_clienteApp.GetMany());
+            return View(_mapper.Map<IEnumerable<ClienteViewModel>>(_clienteAppServico.ObterTodos()));
         }
 
         // GET: Clientes/Details/5
@@ -48,8 +46,7 @@ namespace CadCliWeb.Controllers
             {
                 var entidade = _mapper.Map<Cliente>(cliente);
 
-                await _clienteApp.InsertAsync(entidade);
-                _unitOfWork.Save();
+                await _clienteAppServico.AdicionarAsync(entidade);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -75,8 +72,7 @@ namespace CadCliWeb.Controllers
             {
                 var entidade = _mapper.Map<Cliente>(cliente);
 
-                _clienteApp.Update(entidade);
-                _unitOfWork.Save();
+                _clienteAppServico.Atualizar(entidade);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -95,8 +91,7 @@ namespace CadCliWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(long id)
         {
-            _clienteApp.Delete(id);
-            _unitOfWork.Save();
+            _clienteAppServico.Remover(id);
 
             return RedirectToAction(nameof(Index));
         }
@@ -106,12 +101,12 @@ namespace CadCliWeb.Controllers
             if (id == null)
                 return NotFound();
 
-            var cliente = await _clienteApp.GetByIdAsync(id.Value);
+            var cliente = await _clienteAppServico.ObterPorIdAsync(id.Value);
 
             if (cliente == null)
                 return NotFound();
 
-            return View(cliente);
+            return View(_mapper.Map<ClienteViewModel>(cliente));
         }
     }
 }
