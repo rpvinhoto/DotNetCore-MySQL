@@ -1,0 +1,39 @@
+﻿@model ClienteViewModel
+
+@{
+    ViewData["Title"] = "Remover";
+}
+
+<h2>Remover</h2>
+
+<h3>Deseja excluir esse cliente?</h3>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sexo)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ClienteId" />
+        <input type="submit" value="Remover" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar para lista</a>
+    </form>
+</div>
