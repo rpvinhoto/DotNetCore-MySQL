@@ -1,7 +1,8 @@
-# DotNetCore
-# MySQL CodeFirst
-# DDD
-# FluentAPI
-# MVC
-# UnitOfWork
-# NUnit
+# Projeto
+DotNetCore
+MySQL CodeFirst
+DDD
+FluentAPI
+MVC
+UnitOfWork
+NUnit
