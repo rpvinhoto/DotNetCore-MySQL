@@ -1,4 +1,5 @@
-﻿using Domain.Entidades;
+﻿using System;
+using Domain.Entidades;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Context
@@ -10,5 +11,12 @@ namespace Infra.Context
         }
 
         public virtual DbSet<Cliente> Clientes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            new Seed().Run(modelBuilder);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Entidades;
+using Domain.Interfaces.Repositorios;
 using Infra.Context;
 using System;
 
@@ -7,14 +8,14 @@ namespace Infra.Repositorios
     public class UnitOfWork : IUnitOfWork
     {
         private readonly CadCliContext _context;
-        private RepositorioBase<Cliente> _clienteRepositorio;
+        private IRepositorioBase<Cliente> _clienteRepositorio;
 
         public UnitOfWork(CadCliContext context)
         {
             _context = context;
         }
 
-        public RepositorioBase<Cliente> ClienteRepositorio
+        public IRepositorioBase<Cliente> ClienteRepositorio
         {
             get
             {

@@ -23,36 +23,29 @@ namespace Infra.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Bairro")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Cep")
-                        .HasColumnType("nvarchar(9)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(9)");
 
                     b.Property<string>("Cidade")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Complemento")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("date");
 
                     b.Property<string>("Endereco")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(2)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(2)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("Numero");
 
@@ -61,6 +54,11 @@ namespace Infra.Migrations
                     b.HasKey("ClienteId");
 
                     b.ToTable("Cliente");
+
+                    b.HasData(
+                        new { ClienteId = 1L, Bairro = "Centro", Cep = "86975-000", Cidade = "Mandaguari", Complemento = "B", DataNascimento = new DateTime(1950, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), Endereco = "Avenida Amazonas", Estado = "PR", Nome = "Maria Oliveira", Numero = 123, Sexo = 0 },
+                        new { ClienteId = 2L, Bairro = "Zona 01", Cep = "87013-210", Cidade = "Maringá", DataNascimento = new DateTime(1983, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), Endereco = "Av. Tamandaré", Estado = "PR", Nome = "José da Silva", Numero = 100, Sexo = 1 }
+                    );
                 });
 #pragma warning restore 612, 618
         }

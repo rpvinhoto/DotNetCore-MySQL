@@ -6,7 +6,7 @@ namespace Domain.Servicos
 {
     public class ClienteServico : ServicoBase<Cliente>, IClienteServico
     {
-        public ClienteServico(IClienteRepositorio clienteRepositorio) : base(clienteRepositorio)
+        public ClienteServico(IUnitOfWork unitOfWork) : base(unitOfWork.ClienteRepositorio, unitOfWork)
         {
         }
     }

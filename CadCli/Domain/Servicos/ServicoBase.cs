@@ -9,30 +9,36 @@ namespace Domain.Servicos
     public class ServicoBase<T> : IServicoBase<T> where T : class
     {
         private readonly IRepositorioBase<T> _repositorio;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ServicoBase(IRepositorioBase<T> repositorio)
+        public ServicoBase(IRepositorioBase<T> repositorio, IUnitOfWork unitOfWork)
         {
             _repositorio = repositorio;
+            _unitOfWork = unitOfWork;
         }
 
         public void Adicionar(T entidade)
         {
             _repositorio.Adicionar(entidade);
+            _unitOfWork.Save();
         }
 
         public async Task AdicionarAsync(T entidade)
         {
             await _repositorio.AdicionarAsync(entidade);
+            _unitOfWork.Save();
         }
 
         public void Atualizar(T entidade)
         {
             _repositorio.Atualizar(entidade);
+            _unitOfWork.Save();
         }
 
         public async Task AtualizarAsync(T entidade)
         {
             await _repositorio.AtualizarAsync(entidade);
+            _unitOfWork.Save();
         }
 
         public bool Existe(long id)
@@ -58,11 +64,13 @@ namespace Domain.Servicos
         public void Remover(T entidade)
         {
             _repositorio.Remover(entidade);
+            _unitOfWork.Save();
         }
 
         public void Remover(long id)
         {
             _repositorio.Remover(id);
+            _unitOfWork.Save();
         }
 
         public void Dispose()
@@ -74,6 +82,7 @@ namespace Domain.Servicos
         protected virtual void Dispose(bool disposing)
         {
             _repositorio.Dispose();
+            _unitOfWork.Dispose();
         }
     }
 }

@@ -5,10 +5,6 @@
 }
 
 <h2>Clientes</h2>
-
-<p>
-    <a asp-action="Create">Novo</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -42,7 +38,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Cidade)
             </th>
-            <th></th>
+            <th>
+                <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus-square"></i> Novo</a>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -79,9 +77,9 @@
                 @Html.DisplayFor(modelItem => item.Cidade)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ClienteId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.ClienteId">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClienteId">Remover</a>
+                <a asp-action="Details" asp-route-id="@item.ClienteId" title="Detalhes"><i class="fas fa-info-circle"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.ClienteId" title="Editar"><i class="fas fa-user-edit"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.ClienteId" class="text-danger ml-1" title="Remover"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>
 }

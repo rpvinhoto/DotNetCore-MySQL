@@ -7,7 +7,6 @@
 <h2>Detalhes</h2>
 
 <div>
-    <h4>Cliente</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -73,6 +72,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ClienteId">Editar</a> |
-    <a asp-action="Index">Voltar para lista</a>
+    <a asp-action="Edit" asp-route-id="@Model.ClienteId" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-primary"><i class="fa fa-table"></i> Voltar para lista</a>
 </div>

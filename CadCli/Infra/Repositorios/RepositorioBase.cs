@@ -19,25 +19,21 @@ namespace Infra.Repositorios
         public void Adicionar(T entidade)
         {
             _db.Set<T>().Add(entidade);
-            //_db.SaveChanges();
         }
 
         public async Task AdicionarAsync(T entidade)
         {
             await _db.Set<T>().AddAsync(entidade);
-            //await _db.SaveChangesAsync();
         }
 
         public void Atualizar(T entidade)
         {
             _db.Entry(entidade).State = EntityState.Modified;
-            //_db.SaveChanges();
         }
 
         public async Task AtualizarAsync(T entidade)
         {
             _db.Entry(entidade).State = EntityState.Modified;
-            //await _db.SaveChangesAsync();
         }
 
         public bool Existe(long id)
@@ -63,7 +59,6 @@ namespace Infra.Repositorios
         public void Remover(T entidade)
         {
             _db.Set<T>().Remove(entidade);
-            //_db.SaveChanges();
         }
 
         public void Remover(long id)

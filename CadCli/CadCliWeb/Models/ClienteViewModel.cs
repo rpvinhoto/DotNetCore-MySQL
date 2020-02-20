@@ -24,27 +24,27 @@ namespace CadCliWeb.Models
         public Sexo Sexo { get; set; }
 
         [DisplayName("CEP")]
-        [MaxLength(9, ErrorMessage = "Máximo {0} caracteres.")]
+        [MaxLength(9, ErrorMessage = "Máximo 9 caracteres.")]
         public string Cep { get; set; }
 
         [DisplayName("Endereço")]
-        [MaxLength(250, ErrorMessage = "Máximo {0} caracteres.")]
+        [MaxLength(250, ErrorMessage = "Máximo 250 caracteres.")]
         public string Endereco { get; set; }
 
         [DisplayName("Número")]
         [Range(0, int.MaxValue, ErrorMessage = "Informe um número válido.")]
         public int? Numero { get; set; }
 
-        [MaxLength(100, ErrorMessage = "Máximo {0} caracteres.")]
+        [MaxLength(100, ErrorMessage = "Máximo 100 caracteres.")]
         public string Complemento { get; set; }
 
-        [MaxLength(100, ErrorMessage = "Máximo {0} caracteres.")]
+        [MaxLength(100, ErrorMessage = "Máximo 100 caracteres.")]
         public string Bairro { get; set; }
 
-        [MaxLength(2, ErrorMessage = "Máximo {0} caracteres.")]
+        [MaxLength(2, ErrorMessage = "Máximo 2 caracteres.")]
         public string Estado { get; set; }
 
-        [MaxLength(100, ErrorMessage = "Máximo {0} caracteres.")]
+        [MaxLength(100, ErrorMessage = "Máximo 100 caracteres.")]
         public string Cidade { get; set; }
     }
 }
