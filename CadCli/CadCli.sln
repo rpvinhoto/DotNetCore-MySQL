@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{52BB0D37-8CE8-4C9E-802B-C67BFD60BC95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{52BB0D37-8CE8-4C9E-802B-C67BFD60BC95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C4A8A836-C2CE-49A8-AA74-22562551272F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{C4A8A836-C2CE-49A8-AA74-22562551272F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{90298914-692C-4F44-80F9-4CF52C45318A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{90298914-692C-4F44-80F9-4CF52C45318A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadCliWeb", "CadCliWeb\CadCliWeb.csproj", "{9DC354D5-1D25-41BD-A1FF-9C2BDD7D6C0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CadCliWeb", "CadCliWeb\CadCliWeb.csproj", "{9DC354D5-1D25-41BD-A1FF-9C2BDD7D6C0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9C581021-9D0E-4F5A-ABE3-43E041FCEE62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Test", "Domain.Test\Domain.Test.csproj", "{409E8743-0D5A-4B71-B942-5BA087617EB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,16 @@ Global
 		{9DC354D5-1D25-41BD-A1FF-9C2BDD7D6C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DC354D5-1D25-41BD-A1FF-9C2BDD7D6C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DC354D5-1D25-41BD-A1FF-9C2BDD7D6C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{409E8743-0D5A-4B71-B942-5BA087617EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{409E8743-0D5A-4B71-B942-5BA087617EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{409E8743-0D5A-4B71-B942-5BA087617EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{409E8743-0D5A-4B71-B942-5BA087617EB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{409E8743-0D5A-4B71-B942-5BA087617EB2} = {9C581021-9D0E-4F5A-ABE3-43E041FCEE62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD749AC5-8A18-4895-BD1F-6B4B08E6967E}

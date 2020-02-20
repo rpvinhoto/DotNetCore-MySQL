@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.Entidades;
+﻿using Domain.Entidades;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Context
@@ -14,6 +13,7 @@ namespace Infra.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            new ClienteConfig().Run(modelBuilder);
             new Seed().Run(modelBuilder);
 
             base.OnModelCreating(modelBuilder);

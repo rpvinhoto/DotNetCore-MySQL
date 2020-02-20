@@ -3,6 +3,7 @@ using System;
 using Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Migrations
@@ -20,32 +21,33 @@ namespace Infra.Migrations
             modelBuilder.Entity("Domain.Entidades.Cliente", b =>
                 {
                     b.Property<long>("ClienteId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Bairro")
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(100);
 
                     b.Property<string>("Cep")
-                        .HasColumnType("nvarchar(9)");
+                        .HasMaxLength(9);
 
                     b.Property<string>("Cidade")
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(100);
 
                     b.Property<string>("Complemento")
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(100);
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("date");
 
                     b.Property<string>("Endereco")
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(250);
 
                     b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(2)");
+                        .HasMaxLength(2);
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(100);
 
                     b.Property<int?>("Numero");
 
