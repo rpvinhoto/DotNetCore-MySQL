@@ -5,4 +5,5 @@ DDD
 FluentAPI
 MVC
 UnitOfWork
+AutoMapper
 NUnit
